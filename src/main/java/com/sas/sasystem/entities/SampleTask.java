@@ -1,4 +1,4 @@
-package com.sas.sasystem.Entity;
+package com.sas.sasystem.entities;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,8 +6,8 @@ import java.util.Date;
 public class SampleTask {
     private Market market;
     private ArrayList<SampleItem> sampleItems;
-    private boolean isComplete;
-    private Date completeDate;
+    private boolean isFinished;
+    private Date finishDate;
 
     public SampleTask(Market market) {
         this.market = market;
@@ -21,11 +21,15 @@ public class SampleTask {
         return sampleItems;
     }
 
-    public boolean isComplete() {
-        return isComplete;
+    public boolean isFinished() {
+        return isFinished;
     }
 
-    public Date getCompleteDate() {
-        return completeDate;
+    public Date getFinishDate() {
+        return finishDate;
+    }
+
+    public void addSampleItem(SampleItem sampleItem) {
+        this.sampleItems.add(sampleItem);
     }
 }

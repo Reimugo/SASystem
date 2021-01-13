@@ -1,20 +1,24 @@
-package com.sas.sasystem.Entity;
+package com.sas.sasystem.entities;
 
 import java.util.Date;
 
 public class SampleItemReport {
-    private Product product;
+    private SampleItem sampleItem;
     private int offQuantity;
     private Date sampleDate;
     private String description;
     private Date submitDate;
 
-    public SampleItemReport(Product product) {
-        this.product = product;
+    public SampleItemReport(SampleItem sampleItem, int offQuantity, Date sampleDate, String description) {
+        this.sampleItem = sampleItem;
+        this.offQuantity = offQuantity;
+        this.sampleDate = sampleDate;
+        this.description = description;
+        this.submitDate = null;
     }
 
-    public Product getProduct() {
-        return product;
+    public SampleItem getSampleItem() {
+        return sampleItem;
     }
 
     public int getOffQuantity() {
@@ -43,5 +47,16 @@ public class SampleItemReport {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void submit() {
+        if (sampleItem.isFinished()) {
+            return;
+        }
+        if (submitDate != null) {
+            return;
+        }
+        submitDate = new Date();
+        sampleItem.setReport(this);
     }
 }

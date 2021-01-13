@@ -1,4 +1,4 @@
-package com.sas.sasystem.Entity;
+package com.sas.sasystem.entities;
 
 public class Market {
     private String name;
