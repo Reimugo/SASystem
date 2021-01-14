@@ -1,22 +1,19 @@
 package com.sas.sasystem.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "USER")
 @NamedQuery(name = "User.findByUserName", query = "SELECT u from User u where u.userName = :userName")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User extends AbstractBaseEntity{
     @Column(unique = true, nullable = false, length = 40)
-    private String userName;
+    protected String userName;
 
-    private boolean isSAUser;
+    protected boolean isSAUser;
 
-    private boolean isExpert;
+    protected boolean isExpert;
 
-    private boolean isMarketManager;
+    protected boolean isMarketManager;
 
     public User(String userName) {
         this.userName = userName;
