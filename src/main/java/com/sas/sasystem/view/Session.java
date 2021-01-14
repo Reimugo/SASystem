@@ -2,8 +2,6 @@ package com.sas.sasystem.view;
 
 import com.sas.sasystem.entities.User;
 
-import java.util.HashMap;
-
 public class Session {
     private User user;
 
@@ -20,7 +18,7 @@ public class Session {
     }
 
     public String getUserName() {
-        return user.getName();
+        return user.getUserName();
     }
 
     public String getUserStatus() {

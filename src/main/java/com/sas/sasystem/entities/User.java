@@ -1,26 +1,36 @@
 package com.sas.sasystem.entities;
 
-public class User {
-    private String name;
-    private int id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "USER")
+@NamedQuery(name = "User.findByUserName", query = "SELECT u from User u where u.userName = :userName")
+public class User extends AbstractBaseEntity{
+    @Column(unique = true, nullable = false, length = 40)
+    private String userName;
+
     private boolean isSAUser;
+
     private boolean isExpert;
+
     private boolean isMarketManager;
 
-    public User(String name, int id) {
-        this.name = name;
-        this.id = id;
+    public User(String userName) {
+        this.userName = userName;
         this.isSAUser = false;
         this.isExpert = false;
         this.isMarketManager = false;
     }
 
-    public String getName() {
-        return name;
+    public User() {
+
     }
 
-    public int getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
     public boolean isSAUser() {
@@ -35,8 +45,8 @@ public class User {
         return isMarketManager;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String name) {
+        this.userName = name;
     }
 
     public void setSAUser(boolean SAUser) {

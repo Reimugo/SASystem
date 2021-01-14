@@ -1,13 +1,24 @@
 package com.sas.sasystem.entities;
 
-public class Product {
-    private String name;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 
-    public Product(String name) {
-        this.name = name;
+@Entity
+@NamedQuery(name = "User.findByProductName", query = "SELECT p from Product p where p.productName = :productName")
+public class Product extends AbstractBaseEntity{
+    @Column(unique = true, nullable = false, updatable = false, length = 40)
+    private String productName;
+
+    public Product(String productName) {
+        this.productName = productName;
     }
 
-    public String getName() {
-        return name;
+    public Product() {
+
+    }
+
+    public String getProductName() {
+        return productName;
     }
 }

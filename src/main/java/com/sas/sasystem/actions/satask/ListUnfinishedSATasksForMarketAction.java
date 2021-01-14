@@ -14,6 +14,5 @@ public class ListUnfinishedSATasksForMarketAction extends BaseAction {
 
     @Override
     public void execute() {
-        sampleTaskService.findUnfinishedSampleTasks()
     }
 }
