@@ -21,10 +21,10 @@ public class ListUnfinishedForMarketAction extends BaseAction {
     @Override
     public void execute() {
         Market market = marketService.findMarket(user);
-        ArrayList<SATaskForMarket> saTaskForMarkets = saTaskService.findSATasksForMarket();
+        ArrayList<SATaskForMarket> saTasks = saTaskService.findUnfinishedSATasksForMarket();
         ArrayList<SampleTask> unfinishedSampleTasks = new ArrayList<>();
         ArrayList<SampleItem> unfinishedSampleItems = new ArrayList<>();
-        for (SATaskForMarket saTask : saTaskForMarkets) {
+        for (SATaskForMarket saTask : saTasks) {
             unfinishedSampleTasks.addAll(sampleTaskService.findUnfinishedSampleTasks(saTask, market));
         }
         for (SampleTask sampleTask : unfinishedSampleTasks) {

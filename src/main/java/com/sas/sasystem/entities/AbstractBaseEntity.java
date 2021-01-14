@@ -3,7 +3,7 @@ package com.sas.sasystem.entities;
 import javax.persistence.*;
 
 @MappedSuperclass
-public class AbstractBaseEntity {
+public abstract class AbstractBaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)

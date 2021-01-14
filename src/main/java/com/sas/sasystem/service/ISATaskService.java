@@ -16,7 +16,11 @@ public interface ISATaskService {
 
     ArrayList<SATaskForExpert> findSATasksForExpert(User expert);
 
+    ArrayList<SATaskForExpert> findUnfinishedSATasksForExpert(User expert);
+
     ArrayList<SATaskForMarket> findSATasksForMarket();
+
+    ArrayList<SATaskForMarket> findUnfinishedSATasksForMarket();
 
     SATask findSATask(String taskName);
 
