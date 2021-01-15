@@ -16,6 +16,7 @@ public class Expert extends User{
     public Expert(String userName) {
         super(userName);
         this.isExpert = true;
+        this.score = 0;
     }
 
     public int getScore() {

@@ -8,7 +8,7 @@ public class Market extends AbstractBaseEntity{
     @Column(unique = true, nullable = false, updatable = false, length = 40)
     private String marketName;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private User manager;
 
     @Column

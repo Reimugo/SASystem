@@ -5,10 +5,12 @@ import com.sas.sasystem.service.IQueryService;
 import com.sas.sasystem.util.DateTimeUtils;
 import com.sas.sasystem.view.Message;
 import com.sas.sasystem.view.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
 public class QueryOffQuantityAction extends BaseAction {
+    @Autowired
     private IQueryService queryService;
 
     public QueryOffQuantityAction(Session s, Message p) {
