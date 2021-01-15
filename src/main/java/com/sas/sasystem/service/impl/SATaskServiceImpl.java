@@ -7,9 +7,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class SATaskServiceImpl implements ISATaskService {
+
+    //todo 得到专家和农贸市场的SATask的list
+    ArrayList<SATaskForMarket> saTasksForMarket = new ArrayList<>();
+    ArrayList<SATaskForExpert> saTasksForExpert = new ArrayList<>();
+
+
     @Override
     public void releaseSATaskForMarket(SATaskForMarket saTaskForMarket) {
-
+        saTasksForMarket.add(saTaskForMarket);
     }
 
     @Override
@@ -21,7 +27,7 @@ public class SATaskServiceImpl implements ISATaskService {
 
     @Override
     public void releaseSATaskForExpert(SATaskForExpert saTaskForExpert) {
-
+        saTasksForExpert.add(saTaskForExpert);
     }
 
     @Override
@@ -33,26 +39,62 @@ public class SATaskServiceImpl implements ISATaskService {
 
     @Override
     public ArrayList<SATaskForExpert> findSATasksForExpert(User expert) {
-        return null;
+        ArrayList<SATaskForExpert> ret = new ArrayList<>();
+        for (SATaskForExpert saTask: saTasksForExpert
+             ) {
+            if(saTask.getExpert() == expert){
+                ret.add(saTask);
+            }
+        }
+        return ret;
     }
 
     @Override
     public ArrayList<SATaskForExpert> findUnfinishedSATasksForExpert(User expert) {
-        return null;
+        ArrayList<SATaskForExpert> ret = new ArrayList<>();
+        for (SATaskForExpert saTask: saTasksForExpert
+        ) {
+            if(saTask.getExpert() == expert && (!saTask.isFinished())){
+                ret.add(saTask);
+            }
+        }
+        return ret;
     }
+
 
     @Override
     public ArrayList<SATaskForMarket> findSATasksForMarket() {
-        return null;
+        return saTasksForMarket;
     }
 
     @Override
     public ArrayList<SATaskForMarket> findUnfinishedSATasksForMarket() {
-        return null;
+        ArrayList<SATaskForMarket> ret = new ArrayList<>();
+        for (SATaskForMarket task: saTasksForMarket
+             ) {
+            if(!task.isFinished()){
+                ret.add(task);
+            }
+        }
+        return ret;
     }
+
 
     @Override
     public SATask findSATask(String taskName) {
+        for (SATaskForMarket task: saTasksForMarket
+             ) {
+            if(task.getName().equals(taskName)){
+                return task;
+            }
+        }
+
+        for (SATaskForExpert task: saTasksForExpert
+             ) {
+            if(task.getName().equals(taskName)){
+                return task;
+            }
+        }
         return null;
     }
 

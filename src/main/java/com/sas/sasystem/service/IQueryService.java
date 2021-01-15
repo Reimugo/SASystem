@@ -3,5 +3,5 @@ package com.sas.sasystem.service;
 import java.util.Date;
 
 public interface IQueryService {
-    int queryOffQuantity(int productName, Date startDate, Date endDate);
+    int queryOffQuantity(int productId, Date startDate, Date endDate);
 }

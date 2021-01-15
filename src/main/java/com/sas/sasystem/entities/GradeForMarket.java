@@ -4,9 +4,9 @@ public class GradeForMarket extends Grade{
     private Market market;
     private SampleTask sampleTask;
 
-    public GradeForMarket(int num, String description, Market market, SampleTask sampleTask) {
+    public GradeForMarket(int num, String description, SampleTask sampleTask) {
         super(num, description);
-        this.market = market;
+        this.market = sampleTask.getMarket();
         this.sampleTask = sampleTask;
     }
 

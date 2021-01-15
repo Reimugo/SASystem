@@ -1,6 +1,6 @@
 package com.sas.sasystem.entities;
 
-public class SampleItem {
+public class SampleItem extends AbstractBaseEntity{
     private Product product;
     private SampleItemReport report;
     private boolean isFinished;

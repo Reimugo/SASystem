@@ -12,6 +12,7 @@ public class ProductServiceImpl implements IProductService {
     public ProductServiceImpl(ProductRepository productRepository){
         this.productRepository = productRepository;
     }
+
     @Override
     public Product findProductByName(String productName) {
         return productRepository.findProductByProductName(productName);
