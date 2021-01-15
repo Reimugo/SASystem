@@ -2,13 +2,13 @@ package com.sas.sasystem;
 
 import com.sas.sasystem.actions.query.QueryOffQuantityAction;
 import com.sas.sasystem.actions.releaseSATask.ReleaseForMarketAction;
+import com.sas.sasystem.actions.report.SubmitReportAction;
+import com.sas.sasystem.actions.sampleItem.ListUnfinishedForExpertAction;
 import com.sas.sasystem.actions.sampleItem.ListUnfinishedForMarketAction;
 import com.sas.sasystem.configuration.Constants;
 import com.sas.sasystem.entities.*;
-import com.sas.sasystem.repository.ExpertRepository;
-import com.sas.sasystem.repository.MarketRepository;
-import com.sas.sasystem.repository.ProductRepository;
-import com.sas.sasystem.repository.UserRepository;
+import com.sas.sasystem.repository.*;
+import com.sas.sasystem.repository.impl.SampleItemRepositoryImpl;
 import com.sas.sasystem.service.*;
 import com.sas.sasystem.service.impl.*;
 import com.sas.sasystem.view.Message;
@@ -41,6 +41,7 @@ class SasystemApplicationTests {
     private ProductRepository productRepository;
     @Autowired
     private MarketRepository marketRepository;
+    private SampleItemRepository sampleItemRepository;
 
     @Autowired
     private IUserService userService;
@@ -82,10 +83,12 @@ class SasystemApplicationTests {
         this.unfinishedSampleItemsForMarket = constants.unfinishedSampleItemsForMarket;
         this.unfinishedSampleItemsForExpert = constants.unfinishedSampleItemsForMarket;
 
+        sampleItemRepository = new SampleItemRepositoryImpl(constants.sampleItems);
+
         queryService = new QueryServiceImpl(constants.itemReports);
         indicatorService = new IndicatorServiceImpl(constants.saTaskForExperts, constants.gradeForExperts, constants.saTaskForMarkets, constants.gradeForMarkets);
-        sampleItemReportService = new SampleItemReportServiceImpl(constants.itemReports);
-        sampleItemService = new SampleItemServiceImpl();
+        sampleItemReportService = new SampleItemReportServiceImpl(constants.itemReports, sampleItemRepository);
+        sampleItemService = new SampleItemServiceImpl(sampleItemRepository);
         sampleTaskService = new SampleTaskServiceImpl();
         saTaskService = new SATaskServiceImpl(constants.saTaskForMarkets, constants.saTaskForExperts);
     }
@@ -167,17 +170,58 @@ class SasystemApplicationTests {
 
     @Test
     void listUnfinishedSampleItemsForExpert() {
+        session = new Session(42);
+        message = new Message();
+        ListUnfinishedForExpertAction listUnfinishedForExpertAction = new ListUnfinishedForExpertAction(session, message, userService, saTaskService, sampleTaskService, sampleItemService);
 
+        Pack res = listUnfinishedForExpertAction.execute();
+        int size = res.getSize();
+        boolean f = size == 3;
+        if (f) {
+            for (int i = 0; i < size; i++) {
+                SampleItem sampleItem = (SampleItem) res.get(String.valueOf(i));
+                boolean t = false;
+                for (SampleItem s : unfinishedSampleItemsForExpert) {
+                    if (sampleItem.getId().equals(s.getId())){
+                        t = true;
+                        break;
+                    }
+                }
+                f &= t;
+            }
+        }
+
+        Assertions.assertTrue(f);
     }
 
     @Test
-    void finishSampleTaskForMarket() {
+    void finishSampleItemForMarket() {
+        session = new Session(105);
+        message = new Message();
+        message.put("SampleItemId", "2");
+        message.put("OffQuantity", "5");
+        message.put("description", "sampleItemForMarket2");
+        SubmitReportAction submitReportAction = new SubmitReportAction(session, message, userService, sampleItemReportService);
 
+        Pack res = submitReportAction.execute();
+
+        SampleItem sampleItem = sampleItemService.findSampleItem((Integer) res.get("SampleItemId"));
+        Assertions.assertTrue(sampleItem.isFinished());
     }
 
     @Test
-    void finishSATaskForExpert() {
+    void finishSampleItemForExpert() {
+        session = new Session(41);
+        message = new Message();
+        message.put("SampleItemId", "6");
+        message.put("OffQuantity", "5");
+        message.put("description", "sampleItemForMarket6");
+        SubmitReportAction submitReportAction = new SubmitReportAction(session, message, userService, sampleItemReportService);
 
+        Pack res = submitReportAction.execute();
+
+        SampleItem sampleItem = sampleItemService.findSampleItem((Integer) res.get("SampleItemId"));
+        Assertions.assertTrue(sampleItem.isFinished());
     }
 
     @Test
@@ -197,6 +241,11 @@ class SasystemApplicationTests {
 
     @Test
     void unfinishTaskForMarket() {
+
+    }
+
+    @Test
+    void gradeSystem() {
 
     }
 }

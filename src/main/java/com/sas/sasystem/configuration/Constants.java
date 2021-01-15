@@ -32,21 +32,27 @@ public class Constants {
     public ArrayList<SATaskForExpert> saTaskForExperts = new ArrayList<>();
     public ArrayList<SATaskForMarket> saTaskForMarkets = new ArrayList<>();
 
+    public ArrayList<SampleItem> sampleItems = new ArrayList<>();
+
 
     private void createMarketSATasks(){
-        SampleItem sampleItem1 = new SampleItem(product1);
+        SampleItem sampleItem1 = new SampleItem(product1, 1);
+        sampleItems.add(sampleItem1);
         SampleItemReport sampleItemReport1 = new SampleItemReport(sampleItem1,3,DateTimeUtils.parse("2021-01-16"),"report1");
         itemReports.add(sampleItemReport1);
         sampleItemReport1.submit();
         SampleTask sampleTask1 = new SampleTask(market1);
         sampleTask1.addSampleItem(sampleItem1);
 
-        SampleItem sampleItem2 = new SampleItem(product2);
+        SampleItem sampleItem2 = new SampleItem(product2, 2);
+        sampleItems.add(sampleItem2);
         unfinishedSampleItemsForMarket.add(sampleItem2);
         SampleTask sampleTask2 = new SampleTask(market2);
-        SampleItem sampleItem3 = new SampleItem(product3);
+        SampleItem sampleItem3 = new SampleItem(product3, 3);
+        sampleItems.add(sampleItem3);
         unfinishedSampleItemsForMarket.add(sampleItem3);
-        SampleItem sampleItem4 = new SampleItem(product4);
+        SampleItem sampleItem4 = new SampleItem(product4, 4);
+        sampleItems.add(sampleItem4);
         unfinishedSampleItemsForMarket.add(sampleItem4);
         sampleTask2.addSampleItem(sampleItem2);
         sampleTask2.addSampleItem(sampleItem3);
@@ -65,17 +71,21 @@ public class Constants {
     }
 
     private void createExpertSATasks(){
-        SampleItem sampleItem1 = new SampleItem(product1);
+        SampleItem sampleItem1 = new SampleItem(product1, 5);
+        sampleItems.add(sampleItem1);
         SampleItemReport sampleItemReport2 = new SampleItemReport(sampleItem1,3,DateTimeUtils.parse("2021-01-16"),"report2");
         itemReports.add(sampleItemReport2);
         sampleItemReport2.submit();
         SampleTask sampleTask1 = new SampleTask(market1);
         sampleTask1.addSampleItem(sampleItem1);
 
-        SampleItem sampleItem2 = new SampleItem(product2);
+        SampleItem sampleItem2 = new SampleItem(product2, 6);
+        sampleItems.add(sampleItem2);
         SampleTask sampleTask2 = new SampleTask(market2);
-        SampleItem sampleItem3 = new SampleItem(product3);
-        SampleItem sampleItem4 = new SampleItem(product4);
+        SampleItem sampleItem3 = new SampleItem(product3, 7);
+        sampleItems.add(sampleItem3);
+        SampleItem sampleItem4 = new SampleItem(product4, 8);
+        sampleItems.add(sampleItem4);
         sampleTask2.addSampleItem(sampleItem2);
         sampleTask2.addSampleItem(sampleItem3);
         sampleTask2.addSampleItem(sampleItem4);

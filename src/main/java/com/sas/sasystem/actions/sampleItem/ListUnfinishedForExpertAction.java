@@ -19,8 +19,11 @@ public class ListUnfinishedForExpertAction extends BaseAction {
     private ISampleTaskService sampleTaskService;
     private ISampleItemService sampleItemService;
 
-    public ListUnfinishedForExpertAction(Session s, Message p, IUserService userService) {
+    public ListUnfinishedForExpertAction(Session s, Message p, IUserService userService, ISATaskService saTaskService, ISampleTaskService sampleTaskService, ISampleItemService sampleItemService) {
         super(s, p, userService);
+        this.saTaskService = saTaskService;
+        this.sampleTaskService = sampleTaskService;
+        this.sampleItemService = sampleItemService;
     }
 
     @Override

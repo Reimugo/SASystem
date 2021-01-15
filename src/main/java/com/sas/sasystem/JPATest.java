@@ -7,16 +7,14 @@ import com.sas.sasystem.repository.MarketRepository;
 import com.sas.sasystem.repository.ProductRepository;
 import com.sas.sasystem.repository.UserRepository;
 import com.sas.sasystem.service.*;
-import com.sas.sasystem.service.impl.SampleItemReportServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-@Component
+//@Component
 public class JPATest implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(JPATest.class);
@@ -62,8 +60,6 @@ public class JPATest implements CommandLineRunner {
         Product product4 = productRepository.findProductByProductName("product4");
 
         Constants constants = new Constants(manager1, manager2, expert1, expert2, market1, market2, product1, product2, product3, product4);
-
-        sampleItemReportService = new SampleItemReportServiceImpl(constants.itemReports);
 
         SampleItemReport sampleItemReport = sampleItemReportService.makeNewReport(1, 5, new Date(), "123");
         sampleItemReportService.submitReport(sampleItemReport);

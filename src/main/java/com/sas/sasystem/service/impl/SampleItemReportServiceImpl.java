@@ -2,23 +2,21 @@ package com.sas.sasystem.service.impl;
 
 import com.sas.sasystem.entities.SampleItemReport;
 import com.sas.sasystem.repository.SampleItemRepository;
-import com.sas.sasystem.repository.impl.SampleItemRepositoryImpl;
 import com.sas.sasystem.service.ISampleItemReportService;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-@Service
 public class SampleItemReportServiceImpl implements ISampleItemReportService {
 
     private ArrayList<SampleItemReport> sampleItemReports;
 
-    SampleItemRepository sampleItemRepository = new SampleItemRepositoryImpl();
+    SampleItemRepository sampleItemRepository;
 
     @Override
     public void submitReport(SampleItemReport report) {
         sampleItemReports.add(report);
+        report.submit();
     }
 
     @Override
@@ -26,8 +24,9 @@ public class SampleItemReportServiceImpl implements ISampleItemReportService {
         return new SampleItemReport(sampleItemRepository.findItemById(sampleItemId),offQuantity,sampleDate,description);
     }
 
-    public SampleItemReportServiceImpl(ArrayList<SampleItemReport> sampleItemReports) {
+    public SampleItemReportServiceImpl(ArrayList<SampleItemReport> sampleItemReports, SampleItemRepository sampleItemRepository) {
         this.sampleItemReports = sampleItemReports;
+        this.sampleItemRepository = sampleItemRepository;
     }
 
     public void setSampleItemReports(ArrayList<SampleItemReport> sampleItemReports) {

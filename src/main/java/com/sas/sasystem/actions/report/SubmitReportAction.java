@@ -3,6 +3,7 @@ package com.sas.sasystem.actions.report;
 import com.sas.sasystem.actions.BaseAction;
 import com.sas.sasystem.entities.SampleItemReport;
 import com.sas.sasystem.service.ISampleItemReportService;
+import com.sas.sasystem.service.IUserService;
 import com.sas.sasystem.util.DateTimeUtils;
 import com.sas.sasystem.view.Message;
 import com.sas.sasystem.view.Pack;
@@ -13,8 +14,9 @@ import java.util.Date;
 public class SubmitReportAction extends BaseAction {
     private ISampleItemReportService sampleItemReportService;
 
-    public SubmitReportAction(Session s, Message p) {
-        super(s, p);
+    public SubmitReportAction(Session s, Message p, IUserService userService, ISampleItemReportService sampleItemReportService) {
+        super(s, p, userService);
+        this.sampleItemReportService = sampleItemReportService;
     }
 
     @Override
@@ -25,6 +27,8 @@ public class SubmitReportAction extends BaseAction {
         String description = p.get("description");
         SampleItemReport report = sampleItemReportService.makeNewReport(sampleItemId, offQuantity, sampleDate, description);
         sampleItemReportService.submitReport(report);
-        return new Pack();
+        Pack pack = new Pack();
+        pack.put("SampleItemId", sampleItemId);
+        return pack;
     }
 }

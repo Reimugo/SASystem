@@ -20,6 +20,13 @@ public class SampleItem extends AbstractBaseEntity{
         this.isFinished = false;
     }
 
+    public SampleItem(Product product, int i) {
+        this.product = product;
+        this.report = null;
+        this.isFinished = false;
+        this.id = i;
+    }
+
     public Product getProduct() {
         return product;
     }

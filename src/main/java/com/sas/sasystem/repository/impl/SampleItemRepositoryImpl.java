@@ -7,8 +7,11 @@ import java.util.ArrayList;
 
 public class SampleItemRepositoryImpl implements SampleItemRepository {
 
-    //todo 得到Item的list
-    private ArrayList<SampleItem> sampleItems = new ArrayList<>();
+    private ArrayList<SampleItem> sampleItems;
+
+    public SampleItemRepositoryImpl(ArrayList<SampleItem> sampleItems) {
+        this.sampleItems = sampleItems;
+    }
 
     @Override
     public SampleItem findItemById(int id) {

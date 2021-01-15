@@ -28,6 +28,10 @@ public class SampleTask {
         return isFinished;
     }
 
+    public void setFinished(boolean finished) {
+        isFinished = finished;
+    }
+
     public Date getFinishDate() {
         return finishDate;
     }
