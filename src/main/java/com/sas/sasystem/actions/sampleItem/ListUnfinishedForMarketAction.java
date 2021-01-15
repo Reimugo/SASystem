@@ -15,8 +15,12 @@ public class ListUnfinishedForMarketAction extends BaseAction {
     private ISampleTaskService sampleTaskService;
     private ISampleItemService sampleItemService;
 
-    public ListUnfinishedForMarketAction(Session s, Message p) {
-        super(s, p);
+    public ListUnfinishedForMarketAction(Session s, Message p, IUserService userService, IMarketService marketService, ISATaskService saTaskService, ISampleTaskService sampleTaskService, ISampleItemService sampleItemService) {
+        super(s, p, userService);
+        this.marketService = marketService;
+        this.saTaskService = saTaskService;
+        this.sampleTaskService = sampleTaskService;
+        this.sampleItemService = sampleItemService;
     }
 
     @Override
@@ -31,6 +35,11 @@ public class ListUnfinishedForMarketAction extends BaseAction {
         for (SampleTask sampleTask : unfinishedSampleTasks) {
             unfinishedSampleItems.addAll(sampleItemService.findUnfinishedSampleItems(sampleTask));
         }
-        return new Pack();
+
+        Pack pack = new Pack();
+        for (int i = 0; i < unfinishedSampleItems.size(); i++) {
+            pack.put(String.valueOf(i), unfinishedSampleItems.get(i));
+        }
+        return pack;
     }
 }

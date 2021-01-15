@@ -7,6 +7,7 @@ import com.sas.sasystem.entities.User;
 import com.sas.sasystem.service.IMarketService;
 import com.sas.sasystem.service.IProductService;
 import com.sas.sasystem.service.ISATaskService;
+import com.sas.sasystem.service.IUserService;
 import com.sas.sasystem.util.DateTimeUtils;
 import com.sas.sasystem.util.StringArrayUtils;
 import com.sas.sasystem.view.Message;
@@ -28,8 +29,12 @@ public abstract class ReleaseAction extends BaseAction {
     protected String description;
     protected User expert;
 
-    public ReleaseAction(Session s, Message p) {
-        super(s, p);
+    public ReleaseAction(Session s, Message p, IUserService userService, ISATaskService saTaskService, IMarketService marketService, IProductService productService) {
+        super(s, p, userService);
+        this.saTaskService = saTaskService;
+        this.marketService = marketService;
+        this.productService = productService;
+
         taskName = p.get("TaskName");
         String[] marketNames = StringArrayUtils.parse(p.get("Markets"));
         markets = new ArrayList<>();
@@ -43,8 +48,8 @@ public abstract class ReleaseAction extends BaseAction {
         }
         deadline = DateTimeUtils.parse(p.get("Deadline"));
         description = p.get("Description");
-        if (p.get("Expert") != null) {
-            expert = userService.findUserById(Integer.parseInt(p.get("Expert")));
+        if (p.get("ExpertId") != null) {
+            expert = userService.findUserById(Integer.parseInt(p.get("ExpertId")));
         }
     }
 

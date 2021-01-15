@@ -20,4 +20,8 @@ public class Pack {
     public void put(String key, Object value) {
         this.pack.put(key, value);
     }
+
+    public int getSize() {
+        return this.pack.size();
+    }
 }

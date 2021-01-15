@@ -11,7 +11,7 @@ import java.util.Date;
 @Service
 public class IndicatorServiceImpl implements IIndicatorService {
 
-    private ArrayList<SATaskForExpert> saTasks;
+    private ArrayList<SATaskForExpert> saTasksForExpert;
 
     private ArrayList<GradeForExpert> expertGrades;
 
@@ -23,7 +23,7 @@ public class IndicatorServiceImpl implements IIndicatorService {
     public void update() {
 
         //更新对专家的评分
-        for (SATaskForExpert saTask:saTasks
+        for (SATaskForExpert saTask: saTasksForExpert
              ) {
             GradeForExpert grade = getSATaskGrade(saTask);
             GradeForExpert criterionGrade = getCriterionGradeForSATask(saTask);
@@ -142,8 +142,8 @@ public class IndicatorServiceImpl implements IIndicatorService {
         return grade;
     }
 
-    public void setSaTasks(ArrayList<SATaskForExpert> saTasks) {
-        this.saTasks = saTasks;
+    public void setSaTasksForExpert(ArrayList<SATaskForExpert> saTasksForExpert) {
+        this.saTasksForExpert = saTasksForExpert;
     }
 
     public void setExpertGrades(ArrayList<GradeForExpert> expertGrades) {
@@ -155,6 +155,13 @@ public class IndicatorServiceImpl implements IIndicatorService {
     }
 
     public void setMarketGrades(ArrayList<GradeForMarket> marketGrades) {
+        this.marketGrades = marketGrades;
+    }
+
+    public IndicatorServiceImpl(ArrayList<SATaskForExpert> saTasksForExpert, ArrayList<GradeForExpert> expertGrades, ArrayList<SATaskForMarket> saTasksForMarket, ArrayList<GradeForMarket> marketGrades) {
+        this.saTasksForExpert = saTasksForExpert;
+        this.expertGrades = expertGrades;
+        this.saTasksForMarket = saTasksForMarket;
         this.marketGrades = marketGrades;
     }
 }

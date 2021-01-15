@@ -12,6 +12,11 @@ public class SATaskServiceImpl implements ISATaskService {
     ArrayList<SATaskForMarket> saTasksForMarket;
     ArrayList<SATaskForExpert> saTasksForExpert;
 
+    public SATaskServiceImpl(ArrayList<SATaskForMarket> saTasksForMarket, ArrayList<SATaskForExpert> saTasksForExpert) {
+        this.saTasksForMarket = saTasksForMarket;
+        this.saTasksForExpert = saTasksForExpert;
+    }
+
     @Override
     public void releaseSATaskForMarket(SATaskForMarket saTaskForMarket) {
         saTasksForMarket.add(saTaskForMarket);

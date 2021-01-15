@@ -7,6 +7,7 @@ import com.sas.sasystem.entities.SampleTask;
 import com.sas.sasystem.service.ISATaskService;
 import com.sas.sasystem.service.ISampleItemService;
 import com.sas.sasystem.service.ISampleTaskService;
+import com.sas.sasystem.service.IUserService;
 import com.sas.sasystem.view.Message;
 import com.sas.sasystem.view.Pack;
 import com.sas.sasystem.view.Session;
@@ -18,8 +19,8 @@ public class ListUnfinishedForExpertAction extends BaseAction {
     private ISampleTaskService sampleTaskService;
     private ISampleItemService sampleItemService;
 
-    public ListUnfinishedForExpertAction(Session s, Message p) {
-        super(s, p);
+    public ListUnfinishedForExpertAction(Session s, Message p, IUserService userService) {
+        super(s, p, userService);
     }
 
     @Override

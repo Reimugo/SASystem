@@ -20,6 +20,8 @@ public class Constants {
     public Product product3;
     public Product product4;
 
+    public ArrayList<SampleItem> unfinishedSampleItemsForMarket = new ArrayList<>();
+
 
     public ArrayList<GradeForExpert> gradeForExperts = new ArrayList<>();
     public ArrayList<GradeForMarket> gradeForMarkets = new ArrayList<>();
@@ -40,9 +42,12 @@ public class Constants {
         sampleTask1.addSampleItem(sampleItem1);
 
         SampleItem sampleItem2 = new SampleItem(product2);
+        unfinishedSampleItemsForMarket.add(sampleItem2);
         SampleTask sampleTask2 = new SampleTask(market2);
         SampleItem sampleItem3 = new SampleItem(product3);
+        unfinishedSampleItemsForMarket.add(sampleItem3);
         SampleItem sampleItem4 = new SampleItem(product4);
+        unfinishedSampleItemsForMarket.add(sampleItem4);
         sampleTask2.addSampleItem(sampleItem2);
         sampleTask2.addSampleItem(sampleItem3);
         sampleTask2.addSampleItem(sampleItem4);
