@@ -6,10 +6,10 @@ public class GradeForExpert extends Grade{
     private Expert expert;
     private SATaskForExpert saTaskForExpert;
 
-    public GradeForExpert(int num, String description, Expert expert, SATaskForExpert saTaskForExpert) {
+    public GradeForExpert(int num, String description, SATaskForExpert saTaskForExpert) {
         super(num, description);
         this.date = new Date();
-        this.expert = expert;
+        this.expert = (Expert) saTaskForExpert.getExpert();
         this.saTaskForExpert = saTaskForExpert;
     }
 

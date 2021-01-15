@@ -1,23 +1,28 @@
 package com.sas.sasystem.service.impl;
 
-import com.sas.sasystem.dao.UserDao;
-import com.sas.sasystem.dao.UserRepository;
 import com.sas.sasystem.entities.User;
+import com.sas.sasystem.repository.UserRepository;
 import com.sas.sasystem.service.IUserService;
 
+import java.util.Optional;
+
 public class UserServiceImpl implements IUserService {
-    private UserDao userDao;
+    private UserRepository userRepository;
 
-    public UserServiceImpl(UserDao userDao) {
-        this.userDao = userDao;
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
-    public User findUser(int id) {
-        return null;
+    public User findUserById(int id) {
+        Optional<User> user= userRepository.findById(id);
+        return user.orElse(null);
     }
 
     @Override
-    public void createUser(User user) {
+    public User findUserByName(String username) {
+        return userRepository.findByUserName(username);
     }
+
+
 }

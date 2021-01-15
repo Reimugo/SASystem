@@ -18,4 +18,16 @@ public class DateTimeUtils {
         }
         return null;
     }
+
+    public static int getDayDiffer(Date startDate, Date endDate){
+        try {
+            long startDateTime = FORMATTER.parse(FORMATTER.format(startDate)).getTime();
+            long endDateTime = FORMATTER.parse(FORMATTER.format(endDate)).getTime();
+            return (int) ((endDateTime - startDateTime) / (1000 * 3600 * 24));
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
 }

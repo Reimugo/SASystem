@@ -21,11 +21,13 @@ public class Expert extends User{
         return score;
     }
 
+    public void updateScore(Grade oldGrade, Grade newGrade) {
+        this.score += newGrade.getNum();
+        this.score -= oldGrade.getPreGrade().getNum();
+    }
+
     public void updateScore(Grade grade) {
         this.score += grade.getNum();
-        if (grade.getPreGrade() != null) {
-            this.score -= grade.getPreGrade().getNum();
-        }
     }
 
     public void setScore(int score) {

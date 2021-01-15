@@ -7,7 +7,6 @@ import com.sas.sasystem.entities.User;
 import com.sas.sasystem.service.IMarketService;
 import com.sas.sasystem.service.IProductService;
 import com.sas.sasystem.service.ISATaskService;
-import com.sas.sasystem.service.IUserService;
 import com.sas.sasystem.util.DateTimeUtils;
 import com.sas.sasystem.util.StringArrayUtils;
 import com.sas.sasystem.view.Message;
@@ -39,12 +38,12 @@ public abstract class ReleaseAction extends BaseAction {
         String[] productNames = StringArrayUtils.parse(p.get("Products"));
         products = new ArrayList<>();
         for (String productName : productNames) {
-            products.add(productService.findProduct(productName));
+            products.add(productService.findProductByName(productName));
         }
         deadline = DateTimeUtils.parse(p.get("Deadline"));
         description = p.get("Description");
         if (p.get("Expert") != null) {
-            expert = userService.findUser(Integer.parseInt(p.get("Expert")));
+            expert = userService.findUserById(Integer.parseInt(p.get("Expert")));
         }
     }
 

@@ -4,7 +4,9 @@ import com.sas.sasystem.entities.Market;
 import com.sas.sasystem.entities.User;
 
 public interface IMarketService {
-    Market findMarket(String marketName);
+    Market findMarketByName(String marketName);
 
-    Market findMarket(User marketManager);
+    Market findMarketByManager(User marketManager);
+
+    Market findMarketById(int id);
 }

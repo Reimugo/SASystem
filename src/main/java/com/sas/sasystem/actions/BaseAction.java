@@ -14,7 +14,8 @@ public abstract class BaseAction {
     public BaseAction(Session s, Message p) {
         this.s = s;
         this.p = p;
-        user = userService.findUser(s.getUserId());
+        assert false;
+        user = userService.findUserById(s.getUserId());
     }
 
     public abstract void execute();
