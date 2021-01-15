@@ -33,7 +33,9 @@ public class Constants {
     private IMarketService marketService;
     private IProductService productService;
 
-    User manager = userService.findUserByName("user1");
+    User manager1 = userService.findUserByName("marketmanager1");
+    User manager2 = userService.findUserByName("marketmanager2");
+
     Expert expert1 = userService.findExpertByName("expert1");
     Expert expert2 = userService.findExpertByName("expert2");
 
@@ -59,6 +61,7 @@ public class Constants {
     private ArrayList<SATaskForMarket> createMarketSATasks(){
         SampleItem sampleItem1 = new SampleItem(product1);
         SampleItemReport sampleItemReport1 = new SampleItemReport(sampleItem1,3,DateTimeUtils.parse("2021-01-16"),"report1");
+        itemReports.add(sampleItemReport1);
         sampleItemReport1.submit();
         SampleTask sampleTask1 = new SampleTask(market1);
         sampleTask1.addSampleItem(sampleItem1);
@@ -71,12 +74,12 @@ public class Constants {
         sampleTask2.addSampleItem(sampleItem3);
         sampleTask2.addSampleItem(sampleItem4);
 
-        SATaskForMarket saTaskForMarket1 = new SATaskForMarket("pj1",manager,DateTimeUtils.parse("2021-01-31"),"OOAD-pj1");
+        SATaskForMarket saTaskForMarket1 = new SATaskForMarket("pj1",manager1,DateTimeUtils.parse("2021-01-31"),"OOAD-pj1");
         saTaskForMarket1.setFinished(true);
         saTaskForMarket1.setFinishDate(DateTimeUtils.parse("2021-01-16"));
         saTaskForMarket1.addSampleTask(sampleTask1);
 
-        SATaskForMarket saTaskForMarket2 = new SATaskForMarket("pj2",manager,DateTimeUtils.parse("2021-01-31"),"OOAD-pj2");
+        SATaskForMarket saTaskForMarket2 = new SATaskForMarket("pj2",manager2,DateTimeUtils.parse("2021-01-31"),"OOAD-pj2");
         saTaskForMarket2.addSampleTask(sampleTask2);
 
         ArrayList<SATaskForMarket> saTaskForMarkets = new ArrayList<>();
@@ -88,8 +91,9 @@ public class Constants {
 
     private ArrayList<SATaskForExpert> createExpertSATasks(){
         SampleItem sampleItem1 = new SampleItem(product1);
-        SampleItemReport sampleItemReport1 = new SampleItemReport(sampleItem1,3,DateTimeUtils.parse("2021-01-16"),"report1");
-        sampleItemReport1.submit();
+        SampleItemReport sampleItemReport2 = new SampleItemReport(sampleItem1,3,DateTimeUtils.parse("2021-01-16"),"report2");
+        itemReports.add(sampleItemReport2);
+        sampleItemReport2.submit();
         SampleTask sampleTask1 = new SampleTask(market1);
         sampleTask1.addSampleItem(sampleItem1);
 
@@ -101,12 +105,12 @@ public class Constants {
         sampleTask2.addSampleItem(sampleItem3);
         sampleTask2.addSampleItem(sampleItem4);
 
-        SATaskForExpert saTaskForExpert1 = new SATaskForExpert("expertTask1",manager,DateTimeUtils.parse("2021-01-31"),"expertTask1",expert1);
+        SATaskForExpert saTaskForExpert1 = new SATaskForExpert("expertTask1",manager1,DateTimeUtils.parse("2021-01-31"),"expertTask1",expert1);
         saTaskForExpert1.setFinished(true);
         saTaskForExpert1.setFinishDate(DateTimeUtils.parse("2021-01-16"));
         saTaskForExpert1.addSampleTask(sampleTask1);
 
-        SATaskForExpert saTaskForExpert2 = new SATaskForExpert("expertTask2",manager,DateTimeUtils.parse("2021-01-31"),"expertTask2",expert2);
+        SATaskForExpert saTaskForExpert2 = new SATaskForExpert("expertTask2",manager2,DateTimeUtils.parse("2021-01-31"),"expertTask2",expert2);
         saTaskForExpert2.addSampleTask(sampleTask2);
 
         ArrayList<SATaskForExpert> saTaskForExperts = new ArrayList<>();
