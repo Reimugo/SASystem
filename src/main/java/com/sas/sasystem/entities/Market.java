@@ -36,9 +36,11 @@ public class Market extends AbstractBaseEntity{
 
     public void updateScore(Grade grade) {
         this.score += grade.getNum();
-        if (grade.getPreGrade() != null) {
-            this.score -= grade.getPreGrade().getNum();
-        }
+    }
+
+    public void updateScore(Grade oldGrade, Grade newGrade) {
+        this.score += newGrade.getNum();
+        this.score -= oldGrade.getNum();
     }
 
     public void setScore(int score) {

@@ -3,6 +3,7 @@ package com.sas.sasystem.entities;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "EXPERT")
 public class Expert extends User{
     @Column
     private int score;
@@ -13,7 +14,7 @@ public class Expert extends User{
     }
 
     public Expert(String userName) {
-        super();
+        super(userName);
         this.isExpert = true;
     }
 
@@ -23,7 +24,7 @@ public class Expert extends User{
 
     public void updateScore(Grade oldGrade, Grade newGrade) {
         this.score += newGrade.getNum();
-        this.score -= oldGrade.getPreGrade().getNum();
+        this.score -= oldGrade.getNum();
     }
 
     public void updateScore(Grade grade) {

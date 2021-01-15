@@ -12,7 +12,6 @@ public class SasystemApplication {
 
 
     public static void main(String[] args) {
-        log.info("123");
         SpringApplication.run(SasystemApplication.class, args);
     }
 

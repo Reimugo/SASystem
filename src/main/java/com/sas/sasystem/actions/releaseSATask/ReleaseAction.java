@@ -33,7 +33,7 @@ public abstract class ReleaseAction extends BaseAction {
         String[] marketNames = StringArrayUtils.parse(p.get("Markets"));
         markets = new ArrayList<>();
         for (String marketName : marketNames) {
-            markets.add(marketService.findMarket(marketName));
+            markets.add(marketService.findMarketByName(marketName));
         }
         String[] productNames = StringArrayUtils.parse(p.get("Products"));
         products = new ArrayList<>();

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @NamedQuery(name = "User.findByUserName", query = "SELECT u from User u where u.userName = :userName")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User extends AbstractBaseEntity{
     @Column(unique = true, nullable = false, length = 40)
     protected String userName;

@@ -37,7 +37,17 @@ public class SATaskServiceImpl implements ISATaskService {
     }
 
     @Override
+    public ArrayList<SATaskForExpert> findUnfinishedSATasksForExpert(User expert) {
+        return null;
+    }
+
+    @Override
     public ArrayList<SATaskForMarket> findSATasksForMarket() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<SATaskForMarket> findUnfinishedSATasksForMarket() {
         return null;
     }
 

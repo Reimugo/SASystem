@@ -20,7 +20,7 @@ public class ListUnfinishedForMarketAction extends BaseAction {
 
     @Override
     public void execute() {
-        Market market = marketService.findMarket(user);
+        Market market = marketService.findMarketByManager(user);
         ArrayList<SATaskForMarket> saTasks = saTaskService.findUnfinishedSATasksForMarket();
         ArrayList<SampleTask> unfinishedSampleTasks = new ArrayList<>();
         ArrayList<SampleItem> unfinishedSampleItems = new ArrayList<>();
