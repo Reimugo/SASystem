@@ -4,6 +4,7 @@ import com.sas.sasystem.entities.*;
 import com.sas.sasystem.service.IMarketService;
 import com.sas.sasystem.service.IProductService;
 import com.sas.sasystem.service.IUserService;
+import com.sas.sasystem.service.impl.ProductServiceImpl;
 import com.sas.sasystem.service.impl.UserServiceImpl;
 import com.sas.sasystem.util.DateTimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,15 @@ public class Constants {
     User manager = userService.findUserByName("user1");
     Expert expert1 = userService.findExpertByName("expert1");
     Expert expert2 = userService.findExpertByName("expert2");
+
     Market market1 = marketService.findMarketById(1);
     Market market2 = marketService.findMarketById(2);
+
     Product product1 = productService.findProductById(1);
     Product product2 = productService.findProductById(2);
+    Product product3 = productService.findProductById(3);
+    Product product4 = productService.findProductById(4);
+
 
     public ArrayList<GradeForExpert> gradeForExperts = new ArrayList<>();
     public ArrayList<GradeForMarket> gradeForMarkets = new ArrayList<>();
@@ -59,7 +65,11 @@ public class Constants {
 
         SampleItem sampleItem2 = new SampleItem(product2);
         SampleTask sampleTask2 = new SampleTask(market2);
+        SampleItem sampleItem3 = new SampleItem(product3);
+        SampleItem sampleItem4 = new SampleItem(product4);
         sampleTask2.addSampleItem(sampleItem2);
+        sampleTask2.addSampleItem(sampleItem3);
+        sampleTask2.addSampleItem(sampleItem4);
 
         SATaskForMarket saTaskForMarket1 = new SATaskForMarket("pj1",manager,DateTimeUtils.parse("2021-01-31"),"OOAD-pj1");
         saTaskForMarket1.setFinished(true);
@@ -85,7 +95,11 @@ public class Constants {
 
         SampleItem sampleItem2 = new SampleItem(product2);
         SampleTask sampleTask2 = new SampleTask(market2);
+        SampleItem sampleItem3 = new SampleItem(product3);
+        SampleItem sampleItem4 = new SampleItem(product4);
         sampleTask2.addSampleItem(sampleItem2);
+        sampleTask2.addSampleItem(sampleItem3);
+        sampleTask2.addSampleItem(sampleItem4);
 
         SATaskForExpert saTaskForExpert1 = new SATaskForExpert("expertTask1",manager,DateTimeUtils.parse("2021-01-31"),"expertTask1",expert1);
         saTaskForExpert1.setFinished(true);
