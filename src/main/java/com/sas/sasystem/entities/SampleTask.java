@@ -11,6 +11,9 @@ public class SampleTask {
 
     public SampleTask(Market market) {
         this.market = market;
+        this.sampleItems = new ArrayList<>();
+        this.isFinished = false;
+        this.finishDate = null;
     }
 
     public Market getMarket() {

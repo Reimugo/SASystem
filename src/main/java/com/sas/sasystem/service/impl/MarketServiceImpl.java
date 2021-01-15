@@ -4,10 +4,14 @@ import com.sas.sasystem.entities.Market;
 import com.sas.sasystem.entities.User;
 import com.sas.sasystem.repository.MarketRepository;
 import com.sas.sasystem.service.IMarketService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class MarketServiceImpl implements IMarketService {
+    @Autowired
     private MarketRepository marketRepository;
 
     public MarketServiceImpl(MarketRepository marketRepository){

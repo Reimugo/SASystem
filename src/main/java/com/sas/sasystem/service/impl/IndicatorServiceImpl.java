@@ -1,23 +1,23 @@
 package com.sas.sasystem.service.impl;
 
-import com.sas.sasystem.configuration.Constants;
 import com.sas.sasystem.entities.*;
 import com.sas.sasystem.service.IIndicatorService;
 import com.sas.sasystem.util.DateTimeUtils;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
+@Service
 public class IndicatorServiceImpl implements IIndicatorService {
 
-    private ArrayList<SATaskForExpert> saTasks = Constants.getInstance().saTaskForExperts;
+    private ArrayList<SATaskForExpert> saTasks;
 
-    private ArrayList<GradeForExpert> expertGrades = Constants.getInstance().gradeForExperts;
+    private ArrayList<GradeForExpert> expertGrades;
 
-   private ArrayList<SATaskForMarket> saTasksForMarket= Constants.getInstance().saTaskForMarkets;
+   private ArrayList<SATaskForMarket> saTasksForMarket;
 
-    private ArrayList<GradeForMarket> marketGrades = Constants.getInstance().gradeForMarkets;
+    private ArrayList<GradeForMarket> marketGrades;
 
     @Override
     public void update() {
@@ -140,5 +140,21 @@ public class IndicatorServiceImpl implements IIndicatorService {
         }
 
         return grade;
+    }
+
+    public void setSaTasks(ArrayList<SATaskForExpert> saTasks) {
+        this.saTasks = saTasks;
+    }
+
+    public void setExpertGrades(ArrayList<GradeForExpert> expertGrades) {
+        this.expertGrades = expertGrades;
+    }
+
+    public void setSaTasksForMarket(ArrayList<SATaskForMarket> saTasksForMarket) {
+        this.saTasksForMarket = saTasksForMarket;
+    }
+
+    public void setMarketGrades(ArrayList<GradeForMarket> marketGrades) {
+        this.marketGrades = marketGrades;
     }
 }

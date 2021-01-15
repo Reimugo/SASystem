@@ -4,6 +4,7 @@ import com.sas.sasystem.actions.BaseAction;
 import com.sas.sasystem.entities.*;
 import com.sas.sasystem.service.*;
 import com.sas.sasystem.view.Message;
+import com.sas.sasystem.view.Pack;
 import com.sas.sasystem.view.Session;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class ListUnfinishedForMarketAction extends BaseAction {
     }
 
     @Override
-    public void execute() {
+    public Pack execute() {
         Market market = marketService.findMarketByManager(user);
         ArrayList<SATaskForMarket> saTasks = saTaskService.findUnfinishedSATasksForMarket();
         ArrayList<SampleTask> unfinishedSampleTasks = new ArrayList<>();
@@ -30,5 +31,6 @@ public class ListUnfinishedForMarketAction extends BaseAction {
         for (SampleTask sampleTask : unfinishedSampleTasks) {
             unfinishedSampleItems.addAll(sampleItemService.findUnfinishedSampleItems(sampleTask));
         }
+        return new Pack();
     }
 }

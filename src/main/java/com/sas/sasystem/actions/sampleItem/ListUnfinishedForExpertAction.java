@@ -8,6 +8,7 @@ import com.sas.sasystem.service.ISATaskService;
 import com.sas.sasystem.service.ISampleItemService;
 import com.sas.sasystem.service.ISampleTaskService;
 import com.sas.sasystem.view.Message;
+import com.sas.sasystem.view.Pack;
 import com.sas.sasystem.view.Session;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class ListUnfinishedForExpertAction extends BaseAction {
     }
 
     @Override
-    public void execute() {
+    public Pack execute() {
         ArrayList<SATaskForExpert> saTasks = saTaskService.findUnfinishedSATasksForExpert(user);
         ArrayList<SampleTask> unfinishedSampleTasks = new ArrayList<>();
         ArrayList<SampleItem> unfinishedSampleItems = new ArrayList<>();
@@ -32,5 +33,6 @@ public class ListUnfinishedForExpertAction extends BaseAction {
         for (SampleTask sampleTask : unfinishedSampleTasks) {
             unfinishedSampleItems.addAll(sampleItemService.findUnfinishedSampleItems(sampleTask));
         }
+        return new Pack();
     }
 }

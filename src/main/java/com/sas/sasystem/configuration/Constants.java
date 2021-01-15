@@ -1,51 +1,24 @@
 package com.sas.sasystem.configuration;
 
 import com.sas.sasystem.entities.*;
-import com.sas.sasystem.service.IMarketService;
-import com.sas.sasystem.service.IProductService;
-import com.sas.sasystem.service.IUserService;
-import com.sas.sasystem.service.impl.ProductServiceImpl;
-import com.sas.sasystem.service.impl.UserServiceImpl;
 import com.sas.sasystem.util.DateTimeUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class Constants {
-    private Constants(){
+    public User manager1;
+    public User manager2;
 
-    }
+    public Expert expert1;
+    public Expert expert2;
 
-    private static Constants instance = null;
+    public Market market1;
+    public Market market2;
 
-    public static Constants getInstance() {
-        if (instance == null) {
-            instance = new Constants();
-        }
-        return instance;
-    }
-
-
-    private IUserService userService;
-
-    private IMarketService marketService;
-    private IProductService productService;
-
-    User manager1 = userService.findUserByName("marketmanager1");
-    User manager2 = userService.findUserByName("marketmanager2");
-
-    Expert expert1 = userService.findExpertByName("expert1");
-    Expert expert2 = userService.findExpertByName("expert2");
-
-    Market market1 = marketService.findMarketById(1);
-    Market market2 = marketService.findMarketById(2);
-
-    Product product1 = productService.findProductById(1);
-    Product product2 = productService.findProductById(2);
-    Product product3 = productService.findProductById(3);
-    Product product4 = productService.findProductById(4);
+    public Product product1;
+    public Product product2;
+    public Product product3;
+    public Product product4;
 
 
     public ArrayList<GradeForExpert> gradeForExperts = new ArrayList<>();
@@ -54,11 +27,11 @@ public class Constants {
     public ArrayList<SampleItemReport> itemReports = new ArrayList<>();
 
 
-    public ArrayList<SATaskForExpert> saTaskForExperts = createExpertSATasks();
-    public ArrayList<SATaskForMarket> saTaskForMarkets = createMarketSATasks();
+    public ArrayList<SATaskForExpert> saTaskForExperts = new ArrayList<>();
+    public ArrayList<SATaskForMarket> saTaskForMarkets = new ArrayList<>();
 
 
-    private ArrayList<SATaskForMarket> createMarketSATasks(){
+    private void createMarketSATasks(){
         SampleItem sampleItem1 = new SampleItem(product1);
         SampleItemReport sampleItemReport1 = new SampleItemReport(sampleItem1,3,DateTimeUtils.parse("2021-01-16"),"report1");
         itemReports.add(sampleItemReport1);
@@ -82,14 +55,11 @@ public class Constants {
         SATaskForMarket saTaskForMarket2 = new SATaskForMarket("pj2",manager2,DateTimeUtils.parse("2021-01-31"),"OOAD-pj2");
         saTaskForMarket2.addSampleTask(sampleTask2);
 
-        ArrayList<SATaskForMarket> saTaskForMarkets = new ArrayList<>();
         saTaskForMarkets.add(saTaskForMarket1);
         saTaskForMarkets.add(saTaskForMarket2);
-
-        return saTaskForMarkets;
     }
 
-    private ArrayList<SATaskForExpert> createExpertSATasks(){
+    private void createExpertSATasks(){
         SampleItem sampleItem1 = new SampleItem(product1);
         SampleItemReport sampleItemReport2 = new SampleItemReport(sampleItem1,3,DateTimeUtils.parse("2021-01-16"),"report2");
         itemReports.add(sampleItemReport2);
@@ -113,11 +83,23 @@ public class Constants {
         SATaskForExpert saTaskForExpert2 = new SATaskForExpert("expertTask2",manager2,DateTimeUtils.parse("2021-01-31"),"expertTask2",expert2);
         saTaskForExpert2.addSampleTask(sampleTask2);
 
-        ArrayList<SATaskForExpert> saTaskForExperts = new ArrayList<>();
         saTaskForExperts.add(saTaskForExpert1);
         saTaskForExperts.add(saTaskForExpert2);
+    }
 
-        return saTaskForExperts;
+    public Constants(User manager1, User manager2, Expert expert1, Expert expert2, Market market1, Market market2, Product product1, Product product2, Product product3, Product product4) {
+        this.manager1 = manager1;
+        this.manager2 = manager2;
+        this.expert1 = expert1;
+        this.expert2 = expert2;
+        this.market1 = market1;
+        this.market2 = market2;
+        this.product1 = product1;
+        this.product2 = product2;
+        this.product3 = product3;
+        this.product4 = product4;
 
+        this.createMarketSATasks();
+        this.createExpertSATasks();
     }
 }

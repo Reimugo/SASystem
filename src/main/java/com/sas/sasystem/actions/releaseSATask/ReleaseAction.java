@@ -10,6 +10,7 @@ import com.sas.sasystem.service.ISATaskService;
 import com.sas.sasystem.util.DateTimeUtils;
 import com.sas.sasystem.util.StringArrayUtils;
 import com.sas.sasystem.view.Message;
+import com.sas.sasystem.view.Pack;
 import com.sas.sasystem.view.Session;
 
 import java.util.ArrayList;
@@ -48,5 +49,5 @@ public abstract class ReleaseAction extends BaseAction {
     }
 
     @Override
-    public abstract void execute();
+    public abstract Pack execute();
 }

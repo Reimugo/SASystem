@@ -5,6 +5,10 @@ import java.util.HashMap;
 public class Message {
     private HashMap<String, String> message;
 
+    public Message() {
+        this.message = new HashMap<>();
+    }
+
     public Message(HashMap<String, String> message) {
         this.message = message;
     }

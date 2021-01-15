@@ -1,17 +1,16 @@
 package com.sas.sasystem.service.impl;
 
-import com.sas.sasystem.configuration.Constants;
 import com.sas.sasystem.entities.*;
 import com.sas.sasystem.service.ISATaskService;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+@Service
 public class SATaskServiceImpl implements ISATaskService {
-
-    ArrayList<SATaskForMarket> saTasksForMarket = Constants.getInstance().saTaskForMarkets;
-    ArrayList<SATaskForExpert> saTasksForExpert = Constants.getInstance().saTaskForExperts;
-
+    ArrayList<SATaskForMarket> saTasksForMarket;
+    ArrayList<SATaskForExpert> saTasksForExpert;
 
     @Override
     public void releaseSATaskForMarket(SATaskForMarket saTaskForMarket) {
@@ -106,5 +105,13 @@ public class SATaskServiceImpl implements ISATaskService {
             }
             saTask.addSampleTask(sampleTaskTmp);
         }
+    }
+
+    public void setSaTasksForMarket(ArrayList<SATaskForMarket> saTasksForMarket) {
+        this.saTasksForMarket = saTasksForMarket;
+    }
+
+    public void setSaTasksForExpert(ArrayList<SATaskForExpert> saTasksForExpert) {
+        this.saTasksForExpert = saTasksForExpert;
     }
 }

@@ -2,9 +2,11 @@ package com.sas.sasystem.service.impl;
 
 import com.sas.sasystem.entities.*;
 import com.sas.sasystem.service.ISampleTaskService;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+@Service
 public class SampleTaskServiceImpl implements ISampleTaskService {
 
     @Override

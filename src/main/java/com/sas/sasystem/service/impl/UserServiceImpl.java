@@ -5,18 +5,17 @@ import com.sas.sasystem.entities.User;
 import com.sas.sasystem.repository.ExpertRepository;
 import com.sas.sasystem.repository.UserRepository;
 import com.sas.sasystem.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements IUserService {
+    @Autowired
     private UserRepository userRepository;
+    @Autowired
     private ExpertRepository expertRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @Override
     public User findUserById(int id) {
