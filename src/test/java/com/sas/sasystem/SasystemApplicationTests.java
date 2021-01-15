@@ -70,7 +70,7 @@ class SasystemApplicationTests {
 
         Constants constants = new Constants(manager1, manager2, expert1, expert2, market1, market2, product1, product2, product3, product4);
 
-        queryService = new QueryServiceImpl(constants.itemReports, productRepository);
+        queryService = new QueryServiceImpl(constants.itemReports);
 
 
         session = new Session(73);

@@ -41,7 +41,7 @@ public class SATaskServiceImpl implements ISATaskService {
         ArrayList<SATaskForExpert> ret = new ArrayList<>();
         for (SATaskForExpert saTask: saTasksForExpert
              ) {
-            if(saTask.getExpert() == expert){
+            if(saTask.getExpert().getId().equals(expert.getId())){
                 ret.add(saTask);
             }
         }
@@ -53,7 +53,7 @@ public class SATaskServiceImpl implements ISATaskService {
         ArrayList<SATaskForExpert> ret = new ArrayList<>();
         for (SATaskForExpert saTask: saTasksForExpert
         ) {
-            if(saTask.getExpert() == expert && (!saTask.isFinished())){
+            if(saTask.getExpert().getId().equals(expert.getId())  && (!saTask.isFinished())){
                 ret.add(saTask);
             }
         }

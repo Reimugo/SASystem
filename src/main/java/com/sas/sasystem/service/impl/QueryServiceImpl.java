@@ -15,21 +15,17 @@ public class QueryServiceImpl implements IQueryService {
 
     private ArrayList<SampleItemReport> itemReports;
 
-    public QueryServiceImpl(ArrayList<SampleItemReport> itemReports, ProductRepository productRepository) {
+    public QueryServiceImpl(ArrayList<SampleItemReport> itemReports) {
         this.itemReports = itemReports;
-        this.productRepository = productRepository;
     }
 
-    @Autowired
-    private ProductRepository productRepository;
 
 
     @Override
     public int queryOffQuantity(int productId, Date startDate, Date endDate) {
         int quantity = 0;
         for (SampleItemReport report: itemReports) {
-            Product product = productRepository.findById(productId).get();
-            if(report.getSampleItem().getProduct() == product) {
+            if(report.getSampleItem().getProduct().getId() ==  productId) {
                 Date date = report.getSampleDate();
                 if(date.after(startDate) && date.before(endDate)){
                     quantity += report.getOffQuantity();

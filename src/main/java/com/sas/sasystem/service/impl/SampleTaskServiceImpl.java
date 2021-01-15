@@ -15,7 +15,7 @@ public class SampleTaskServiceImpl implements ISampleTaskService {
         ArrayList<SampleTask> ret = new ArrayList<>();
         for (SampleTask sampleTask : sampleTasks
                 ) {
-            if(sampleTask.getMarket() == market){
+            if(sampleTask.getMarket().getId().equals( market.getId())){
                 ret.add(sampleTask);
             }
         }
@@ -28,7 +28,7 @@ public class SampleTaskServiceImpl implements ISampleTaskService {
         ArrayList<SampleTask> ret = new ArrayList<>();
         for (SampleTask sampleTask : sampleTasks
         ) {
-            if(sampleTask.getMarket() == market && (!sampleTask.isFinished())){
+            if(sampleTask.getMarket().getId().equals( market.getId()) && (!sampleTask.isFinished())){
                 ret.add(sampleTask);
             }
         }
