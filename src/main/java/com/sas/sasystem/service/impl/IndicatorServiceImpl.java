@@ -1,5 +1,6 @@
 package com.sas.sasystem.service.impl;
 
+import com.sas.sasystem.configuration.Constants;
 import com.sas.sasystem.entities.*;
 import com.sas.sasystem.service.IIndicatorService;
 import com.sas.sasystem.util.DateTimeUtils;
@@ -10,17 +11,13 @@ import java.util.List;
 
 public class IndicatorServiceImpl implements IIndicatorService {
 
-    //todo 得到所有的SATaskForExpert
-    private ArrayList<SATaskForExpert> saTasks = new ArrayList<>();
+    private ArrayList<SATaskForExpert> saTasks = Constants.getInstance().saTaskForExperts;
 
-    //todo 得到所有的专家得分
-    private ArrayList<GradeForExpert> expertGrades = new ArrayList<>();
+    private ArrayList<GradeForExpert> expertGrades = Constants.getInstance().gradeForExperts;
 
-    //todo 得到所有的SATaskForMarket
-   private ArrayList<SATaskForMarket> saTasksForMarket= new ArrayList<>();
+   private ArrayList<SATaskForMarket> saTasksForMarket= Constants.getInstance().saTaskForMarkets;
 
-    //todo 得到所有的农贸市场得分
-    private ArrayList<GradeForMarket> marketGrades = new ArrayList<>();
+    private ArrayList<GradeForMarket> marketGrades = Constants.getInstance().gradeForMarkets;
 
     @Override
     public void update() {

@@ -3,6 +3,15 @@ package com.sas.sasystem.entities;
 public class SampleItem extends AbstractBaseEntity{
     private Product product;
     private SampleItemReport report;
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setFinished(boolean finished) {
+        isFinished = finished;
+    }
+
     private boolean isFinished;
 
     public SampleItem(Product product) {

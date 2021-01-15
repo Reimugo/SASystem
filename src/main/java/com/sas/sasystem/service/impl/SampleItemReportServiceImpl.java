@@ -11,8 +11,7 @@ import java.util.Date;
 
 public class SampleItemReportServiceImpl implements ISampleItemReportService {
 
-    //todo
-    private ArrayList<SampleItemReport> sampleItemReports = Constants.sampleItemReports;
+    private ArrayList<SampleItemReport> sampleItemReports = Constants.getInstance().itemReports;
 
     SampleItemRepository sampleItemRepository = new SampleItemRepositoryImpl();
 

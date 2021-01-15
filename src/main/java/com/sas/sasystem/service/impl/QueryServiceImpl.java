@@ -1,5 +1,6 @@
 package com.sas.sasystem.service.impl;
 
+import com.sas.sasystem.configuration.Constants;
 import com.sas.sasystem.entities.SampleItemReport;
 import com.sas.sasystem.repository.ProductRepository;
 import com.sas.sasystem.service.IQueryService;
@@ -8,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class QueryServiceImpl implements IQueryService {
-    //todo
-    private ArrayList<SampleItemReport> itemReports= new ArrayList<>();
+
+    private ArrayList<SampleItemReport> itemReports= Constants.getInstance().itemReports;
 
     private ProductRepository productRepository;
 

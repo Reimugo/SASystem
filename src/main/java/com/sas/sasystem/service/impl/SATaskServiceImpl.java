@@ -1,5 +1,6 @@
 package com.sas.sasystem.service.impl;
 
+import com.sas.sasystem.configuration.Constants;
 import com.sas.sasystem.entities.*;
 import com.sas.sasystem.service.ISATaskService;
 
@@ -8,9 +9,8 @@ import java.util.Date;
 
 public class SATaskServiceImpl implements ISATaskService {
 
-    //todo 得到专家和农贸市场的SATask的list
-    ArrayList<SATaskForMarket> saTasksForMarket = new ArrayList<>();
-    ArrayList<SATaskForExpert> saTasksForExpert = new ArrayList<>();
+    ArrayList<SATaskForMarket> saTasksForMarket = Constants.getInstance().saTaskForMarkets;
+    ArrayList<SATaskForExpert> saTasksForExpert = Constants.getInstance().saTaskForExperts;
 
 
     @Override
